@@ -1,20 +1,20 @@
-# Shibuya Event App
+# 渋谷イベントアプリ
 
-## Introduction
-This application is developed as a graduation project based on a theme provided by Tokyu Corporation. The main purpose of the application is to increase visitors and engagement with the Shibuya area by offering information about events, allowing users to participate, and managing user points. 
+## アプリ紹介
+このアプリケーションは、卒業制作として開発され、テーマは東急株式会社から提供されました。アプリの主な目的は、渋谷エリアのイベント情報を提供し、ユーザーがイベントに参加することでポイントを獲得し、渋谷への訪問を促進することです。アプリを通じて、渋谷のファンを増やし、地域活性化に貢献することを目指しています。
 
-### Project Theme
-The project was created under the theme proposed by Tokyu Corporation, which focused on fostering “Shibuya fans” and increasing engagement by encouraging users to participate in local events and earn points for their involvement.
+### プロジェクトテーマ
+東急株式会社から提示されたテーマは、渋谷エリアのイベントに参加することで「渋谷のファン」を増やし、地域の活性化を図ることでした。このアプリでは、ユーザーがイベント情報を検索し、ポイントを獲得できるシステムを実装しています。
 
-## Features
-- Display upcoming events in the Shibuya area.
-- Search functionality based on event name or month.
-- User authentication and personalized event recommendations.
-- Point system for user participation in events.
-- Event details with external links and safety warnings.
+## 機能
+- 渋谷エリアで開催されるイベント情報の表示
+- イベント名や開催月を基にした検索機能
+- ユーザー認証機能と個別イベントのおすすめ表示
+- イベント参加によるポイントシステム
+- イベント詳細ページに外部リンクと安全警告の表示
 
-## Application Architecture and Flow
-The application follows a clean MVC structure using the Django framework for the backend and Vue.js for the frontend.
+## アプリケーションのアーキテクチャとフロー
+アプリケーションは、バックエンドにDjangoフレームワーク、フロントエンドにVue.jsを使用したMVC構造を採用しています。
 
-### Screen Transition Flowchart
-Below is the flowchart representing the app’s screen transitions and user journey:
+### 画面遷移のリレーション図
+以下はアプリケーションの画面遷移を示したフロー図です：
