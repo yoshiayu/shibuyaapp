@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マイページ</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>マイページ</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">ホーム</a></li>
+                <li><a href="{% url 'my_page' %}">マイページ</a></li>
+                <li><a href="{% url 'search' %}?q=">イベント検索</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">ログイン</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="points-container">
+            <h2>獲得ポイント</h2>
+            <p>現在のポイント: {{ total_points }}pt</p>
+
+            <h3>ポイント履歴</h3>
+            <ul>
+                {% for point in points %}
+                <li>{{ point.event.name }} - {{ point.points }}ポイント ({{ point.date_added }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 渋谷イベントアプリ</p>
+    </footer>
+</body>
+</html>

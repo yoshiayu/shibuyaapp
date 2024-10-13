@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ current_month }}月 イベント情報 - 渋谷イベントアプリ</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    
+</head>
+<body>
+    <header>
+        <h1>{{ current_month }}月の渋谷エリアイベント情報</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">ホーム</a></li>
+                <li><a href="{% url 'my_page' %}">マイページ</a></li>
+                <li><a href="{% url 'search' %}?q=">イベント検索</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">ログイン</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>{{ current_month }}月のイベント一覧</h2>
+        <div class="events">
+            {% for event in page_obj %}
+            <div class="event-card">
+                <img src="{{ event.image }}" alt="イベント画像">
+                <div class="event-details">
+                    <h3>{{ event.title }}</h3>
+                    <p>開始日: {{ event.startDate }}</p>
+                    <p>終了日: {{ event.endDate }}</p>
+                    <p>電話番号: {{ event.telephone }}</p>
+                </div>
+                {% if 'https://' not in event.url %}
+                  <a href="{{ event.url }}" class="btn btn-warning" target="_blank" rel="noopener noreferrer">
+                    詳細はこちら（安全でない可能性があります）
+                  </a>
+                {% else %}
+                  <a href="{{ event.url }}" class="btn" target="_blank" rel="noopener noreferrer">
+                    詳細はこちら
+                  </a>
+                {% endif %}
+            </div>
+            {% empty %}
+            <p>イベントが見つかりませんでした。</p>
+            {% endfor %}
+        </div>
+        
+    <!-- ページネーション -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; 最初</a>
+                <a href="?page={{ page_obj.previous_page_number }}">前</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <span class="current">{{ num }}</span>
+                {% elif num >= page_obj.number|add:'-3' and num <= page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">次</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">最後 &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 渋谷イベントアプリ</p>
+    </footer>
+</body>
+</html>
