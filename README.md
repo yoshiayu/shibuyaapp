@@ -62,5 +62,19 @@
 ## インストールと使用方法
 
 ### 1. リポジトリをクローンします：
-```bash
+```
 git clone https://github.com/your-username/shibuya-event-app.git
+```
+## 2. 仮想環境を作成し、依存関係をインストールします：
+```
+# 仮想環境を作成
+python3 -m venv env
+```
+# 仮想環境をアクティベート
+```
+source env/bin/activate
+```
+# 必要なパッケージをインストール
+```
+pip install -r requirements.txt
+```
