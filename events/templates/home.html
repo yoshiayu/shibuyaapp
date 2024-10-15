@@ -38,13 +38,13 @@
                     <p>電話番号: {{ event.telephone }}</p>
                 </div>
                 {% if 'https://' not in event.url %}
-                  <a href="{{ event.url }}" class="btn btn-warning" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ event.url }}" class="btn btn-warning" target="_blank" rel="noopener noreferrer">
                     詳細はこちら（安全でない可能性があります）
-                  </a>
+                    </a>
                 {% else %}
-                  <a href="{{ event.url }}" class="btn" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ event.url }}" class="btn" target="_blank" rel="noopener noreferrer">
                     詳細はこちら
-                  </a>
+                    </a>
                 {% endif %}
             </div>
             {% empty %}
